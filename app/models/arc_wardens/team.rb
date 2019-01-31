@@ -1,7 +1,7 @@
 module ArcWardens
   class Team < ApplicationRecord
     include ArcWardenConcern
-    self.table_name = "teams"
+    self.table_name = :teams
     self.inheritance_column = :_type_disabled
 
     has_many :team_aliases, foreign_key: :team_id

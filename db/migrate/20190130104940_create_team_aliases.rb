@@ -3,7 +3,7 @@ class CreateTeamAliases < ActiveRecord::Migration[6.0]
     create_table :team_aliases do |t|
 
       t.belongs_to :team, index: true
-      t.string :name, null: false, :default => ''
+      t.string :name, null: false, default: ''
     end
   end
 end
