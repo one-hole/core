@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_064022) do
+ActiveRecord::Schema.define(version: 2019_02_21_281353) do
+
+  create_table "balltes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "game_id"
+    t.bigint "left_team_id"
+    t.bigint "right_team_id"
+    t.datetime "start_time"
+    t.bigint "offical_id"
+    t.bigint "league_id"
+    t.integer "status"
+    t.integer "left_score", default: 0
+    t.integer "right_score", default: 0
+    t.integer "format"
+    t.integer "game_no", default: 0, comment: "当前进行到第几场"
+    t.boolean "live", default: false
+  end
+
+  create_table "battles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "game_id"
+    t.bigint "left_team_id"
+    t.bigint "right_team_id"
+    t.datetime "start_time"
+    t.bigint "offical_id"
+    t.bigint "league_id"
+    t.integer "status"
+    t.integer "left_score", default: 0
+    t.integer "right_score", default: 0
+    t.integer "format"
+    t.integer "game_no", default: 0, comment: "当前进行到第几场"
+    t.boolean "live", default: false
+  end
 
   create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -48,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_064022) do
     t.string "name", default: ""
     t.string "abbr", default: ""
     t.string "logo", default: ""
-    t.bigint "offical_id", default: -1, comment: "Dota2: SteamID | CSGO: HLTVID"
+    t.bigint "offical_id", comment: "Dota2: SteamID | CSGO: HLTVID"
     t.string "country"
     t.string "region"
     t.boolean "operated", default: false, comment: "队伍是否运营过"
