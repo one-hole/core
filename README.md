@@ -1,24 +1,14 @@
-# README
+网关项目：
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+我们会提供
 
-Things you may want to cover:
+* 赛程数据（HTTP接口）
 
-* Ruby version
+  battle:
+    league:
+    left_team:
+    right_team:
+    matches:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 赛中数据（HTTP接口 & WebSocket 推送）
+* 赛果数据（HTTP接口）
