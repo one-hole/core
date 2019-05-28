@@ -2,8 +2,8 @@
 #
 # Table name: leagues
 #
-#  id          :bigint(8)        not null, primary key
-#  game_id     :bigint(8)
+#  id          :bigint           not null, primary key
+#  game_id     :bigint
 #  name        :string(255)
 #  status      :integer
 #  start_time  :datetime
@@ -12,7 +12,7 @@
 #  hidden      :boolean          default(FALSE)
 #  logo        :string(255)
 #  second_logo :string(255)
-#  aw_id       :integer
+#  oh_id       :integer
 #
 
 module ArcWardens
@@ -27,7 +27,7 @@ module ArcWardens
       self.includes(:league_aliases).each do |aw_league|
         new_league = ::League.find_or_create_by(
           id:          aw_league.id,
-          aw_id:       aw_league.id,
+          oh_id:       aw_league.id,
           game_id:     aw_league.game_id,
           logo:        aw_league.logo,
           second_logo: aw_league.secondary_logo,

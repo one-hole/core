@@ -2,8 +2,8 @@
 #
 # Table name: leagues
 #
-#  id          :bigint(8)        not null, primary key
-#  game_id     :bigint(8)
+#  id          :bigint           not null, primary key
+#  game_id     :bigint
 #  name        :string(255)
 #  status      :integer
 #  start_time  :datetime
@@ -12,7 +12,7 @@
 #  hidden      :boolean          default(FALSE)
 #  logo        :string(255)
 #  second_logo :string(255)
-#  aw_id       :integer
+#  oh_id       :integer
 #
 
 class League < ApplicationRecord

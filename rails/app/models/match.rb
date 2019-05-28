@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: matches
+#
+#  id        :bigint           not null, primary key
+#  battle_id :bigint
+#  start_at  :datetime
+#  end_at    :datetime
+#  reverse   :boolean          default(FALSE)
+#  type      :string(255)
+#
+
 # 小局比赛
 
 # 这里有一些默认的处理前提：

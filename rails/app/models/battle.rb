@@ -2,13 +2,13 @@
 #
 # Table name: battles
 #
-#  id            :bigint(8)        not null, primary key
+#  id            :bigint           not null, primary key
 #  game_id       :integer
-#  left_team_id  :bigint(8)
-#  right_team_id :bigint(8)
+#  left_team_id  :bigint
+#  right_team_id :bigint
 #  start_time    :datetime
-#  offical_id    :bigint(8)
-#  league_id     :bigint(8)
+#  offical_id    :bigint
+#  league_id     :bigint
 #  status        :integer
 #  left_score    :integer          default(0)
 #  right_score   :integer          default(0)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_092134) do
+ActiveRecord::Schema.define(version: 2019_05_28_083003) do
 
   create_table "battles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "game_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_092134) do
     t.boolean "hidden", default: false
     t.string "logo"
     t.string "second_logo"
-    t.integer "aw_id"
+    t.integer "oh_id"
     t.index ["game_id"], name: "index_leagues_on_game_id"
     t.index ["offical_id", "game_id"], name: "uniq_on_league", unique: true
   end
@@ -77,6 +77,24 @@ ActiveRecord::Schema.define(version: 2019_05_27_092134) do
     t.boolean "reverse", default: false, comment: "left - right 用来映射 CT & T | 紫色方 红色方 | radiant & dire 这样的"
     t.string "type"
     t.index ["battle_id"], name: "index_matches_on_battle_id"
+  end
+
+  create_table "player_teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "team_id"
+    t.datetime "at", comment: "Action 发生的时间"
+    t.integer "action", default: 0, comment: "行为、比如加入、比如退出"
+    t.index ["player_id"], name: "index_player_teams_on_player_id"
+    t.index ["team_id"], name: "index_player_teams_on_team_id"
+  end
+
+  create_table "players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "abbr"
+    t.string "avatar"
+    t.bigint "team_id"
+    t.bigint "offical_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "team_aliases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -94,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_092134) do
     t.string "country"
     t.string "region"
     t.boolean "operated", default: false, comment: "队伍是否运营过"
-    t.integer "aw_id", comment: "电竞大师的 ID"
+    t.integer "oh_id"
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
 

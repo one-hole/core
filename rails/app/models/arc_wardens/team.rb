@@ -2,16 +2,16 @@
 #
 # Table name: teams
 #
-#  id         :bigint(8)        not null, primary key
-#  game_id    :bigint(8)
+#  id         :bigint           not null, primary key
+#  game_id    :bigint
 #  name       :string(255)      default("")
 #  abbr       :string(255)      default("")
 #  logo       :string(255)      default("")
-#  offical_id :bigint(8)
+#  offical_id :bigint
 #  country    :string(255)
 #  region     :string(255)
 #  operated   :boolean          default(FALSE)
-#  aw_id      :integer
+#  oh_id      :integer
 #
 
 module ArcWardens
@@ -26,7 +26,7 @@ module ArcWardens
       self.includes(:team_aliases).each do |aw_team|        
         new_team = ::Team.find_or_create_by(
                id: aw_team.id,
-            aw_id: aw_team.id,
+            oh_id: aw_team.id,
           game_id: aw_team.game_id,
              name: aw_team.name,
              abbr: aw_team.tag,

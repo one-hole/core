@@ -2,8 +2,8 @@
 #
 # Table name: team_aliases
 #
-#  id      :bigint(8)        not null, primary key
-#  team_id :bigint(8)
+#  id      :bigint           not null, primary key
+#  team_id :bigint
 #  name    :string(255)      default(""), not null
 #
 
