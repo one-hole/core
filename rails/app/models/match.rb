@@ -17,5 +17,14 @@
 #   left_team : CT， reverse: false : 如果 reverse: true, 那么 right_team : CT
   
 class Match < ApplicationRecord
-  # has_one :csgo_info, as: :infoable, class_name: Proc.new { "Matches::CsgoInfo" }
+  enum states: {
+    unstart:  0,
+    ongoing:  1,
+    finished: 2
+  }
+
+  belongs_to :battle, optional: true
+
+  has_many :player_matches
+  has_many :players, through: :player_matches
 end

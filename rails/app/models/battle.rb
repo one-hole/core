@@ -32,5 +32,6 @@ class Battle < ApplicationRecord
   belongs_to :league
 
   has_many :matches
+  has_many :player_matches, through: :matches
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_083003) do
+ActiveRecord::Schema.define(version: 2019_05_30_054118) do
 
   create_table "battles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "game_id"
@@ -76,14 +76,24 @@ ActiveRecord::Schema.define(version: 2019_05_28_083003) do
     t.datetime "end_at"
     t.boolean "reverse", default: false, comment: "left - right 用来映射 CT & T | 紫色方 红色方 | radiant & dire 这样的"
     t.string "type"
+    t.integer "state", default: 0
     t.index ["battle_id"], name: "index_matches_on_battle_id"
+  end
+
+  create_table "player_matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "match_id"
+    t.integer "position", comment: "位置"
+    t.integer "hero", comment: "玩的英雄"
+    t.index ["match_id"], name: "index_player_matches_on_match_id"
+    t.index ["player_id"], name: "index_player_matches_on_player_id"
   end
 
   create_table "player_teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "team_id"
     t.datetime "at", comment: "Action 发生的时间"
-    t.integer "action", default: 0, comment: "行为、比如加入、比如退出"
+    t.integer "action", default: 0
     t.index ["player_id"], name: "index_player_teams_on_player_id"
     t.index ["team_id"], name: "index_player_teams_on_team_id"
   end
