@@ -19,7 +19,12 @@ class League < ApplicationRecord
   include BasicConcern
 
   has_many :aliases, foreign_key: :league_id, class_name: 'LeagueAlias'
+  accepts_nested_attributes_for :aliases
 
-  def self.merge()
+  class << self
+    # 这里如果找不到、那么就需要创建 TODO
+    def by_names(names, game_id)
+      @league = League.where({name: names, game_id: game_id}).first
+    end
   end
 end

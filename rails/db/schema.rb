@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_054118) do
+ActiveRecord::Schema.define(version: 2019_09_06_150912) do
 
   create_table "battles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "game_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_054118) do
     t.integer "format"
     t.integer "game_no", default: 0, comment: "当前进行到第几场"
     t.boolean "live", default: false
+    t.string "trdid"
+    t.index ["trdid"], name: "index_battles_on_trdid", unique: true
   end
 
   create_table "csgo_match_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,8 +68,10 @@ ActiveRecord::Schema.define(version: 2019_05_30_054118) do
     t.string "logo"
     t.string "second_logo"
     t.integer "oh_id"
+    t.string "trdid"
     t.index ["game_id"], name: "index_leagues_on_game_id"
     t.index ["offical_id", "game_id"], name: "uniq_on_league", unique: true
+    t.index ["trdid"], name: "index_leagues_on_trdid", unique: true
   end
 
   create_table "matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_054118) do
     t.bigint "player_id"
     t.bigint "team_id"
     t.datetime "at", comment: "Action 发生的时间"
-    t.integer "action", default: 0
+    t.integer "action", default: 0, comment: "行为、比如加入、比如退出"
     t.index ["player_id"], name: "index_player_teams_on_player_id"
     t.index ["team_id"], name: "index_player_teams_on_team_id"
   end
@@ -123,7 +127,9 @@ ActiveRecord::Schema.define(version: 2019_05_30_054118) do
     t.string "region"
     t.boolean "operated", default: false, comment: "队伍是否运营过"
     t.integer "oh_id"
+    t.string "trdid"
     t.index ["game_id"], name: "index_teams_on_game_id"
+    t.index ["trdid"], name: "index_teams_on_trdid", unique: true
   end
 
 end

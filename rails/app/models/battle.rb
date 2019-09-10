@@ -22,13 +22,13 @@ class Battle < ApplicationRecord
 
   enum status: {
     canceled:  -1,
-    pending:   0,
+    upcoming:   0,
     ongoing:   1,
     finished:  2
   }
 
-  belongs_to :left_team
-  belongs_to :right_team
+  belongs_to :left_team,  class_name: "Team", foreign_key: "left_team_id"
+  belongs_to :right_team, class_name: "Team", foreign_key: "right_team_id"
   belongs_to :league
 
   has_many :matches

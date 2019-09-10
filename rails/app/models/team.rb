@@ -21,4 +21,14 @@ class Team < ApplicationRecord
   has_many :aliases, foreign_key: :team_id, class_name: 'TeamAlias'
   has_many :player_teams
   has_many :players, through: :player_teams
+
+  class << self
+    def by_names(names, game_id)
+      @team = where({ name: names, game_id: game_id}).or(where({ abbr: names, game_id: game_id})).first
+    end
+  end
+
+  after_create_commit do
+    puts "这里需要更新 Logo"
+  end
 end

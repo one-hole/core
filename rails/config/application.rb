@@ -22,7 +22,7 @@ Bundler.require(*Rails.groups)
 module Core
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
     config.time_zone = 'Beijing'
 
     config.autoload_paths += Dir["#{Rails.root}/app/models/arc_wardens/*.rb"]

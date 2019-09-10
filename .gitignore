@@ -27,3 +27,6 @@
 
 /rails/config/database_aw.yml
 /rails/config/database.yml
+/rails/.idea
+/rails/.generators
+/rails/.rakeTasks
